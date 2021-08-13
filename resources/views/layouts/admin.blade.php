@@ -16,14 +16,20 @@
     
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel=stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
     
-    <!-- Styles -->
+   <!-- Styles -->
     <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ secure_asset('css/admin.css') }}" rel="stylesheet">
   </head>
 
 <body>
+  
+    
+    <main class="py-4">
+     @yield('content')
+     </main>
+     
   <div id="app">
     <nav class="navber navber-expand-md navber-dark navber-laravel">
       <div class="container">
@@ -31,8 +37,8 @@
           {{ config('app.name', 'Laravel') }}
           </a>
           <button class="navber-toggler" type="button" 
-          data-toggle="collapse" data-target="#naverSupportedContent" aria-controls=navberSupportedContent"
-          aria-expanded="false" aria-label="Toggle navigation">
+          　data-toggle="collapse" data-target="#navberSupportedContent" aria-controls="navberSupportedContent"
+          　aria-expanded="false" aria-label="Toggle navigation">
           
           <span class="navber-toggler-icon"></span>
           </button>
@@ -40,19 +46,44 @@
         <div class="collapse navber-collapse" id="navberSupportedContent">
         
         <ul class="navber-nav mr-auto">
-        </ul>
         
         <ul class="navber-nav ml-auto">
+          
+           <!-- Authentication Links -->
+        {{-- ログインしていなかったらログイン画面へのリンクを表示 --}}
+        @guest
+        <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login')}}</a></li>
+        
+        {{-- ログインしていたらユーザー名とログアウトボタンを表示 --}}
+        @else
+        <li class="nav-item dropdown">
+        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#"
+        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-
+        pre> 
+           {{ Auth::user()->name }} <span class="caret"></span>
+        </a>
+          
+          <div class="dropdown-menu" aria-labelledby="navberDropdown">
+            <a class="dropdown-item" href="{{ route('logout') }}"
+              onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();">
+                
+            {{ __('Logout') }}
+            </a>
+            
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+              @csrf
+            </form>
+            </div>
+          </li>
+          
+          @endguest
+        
         </ul>
         
   </div>
       </div>
     </nav>
-    
-    <main class="py-4">
-     @yield('content')
-     </main>
-     </div>
   
 </body>  
   
