@@ -10,10 +10,6 @@
   </head>
     <body>
     
-    </body>
-    
-</html>
-
 {{-- layouts/admin.blade.phpを読み込む --}}
 @extends('layouts.profile')
 
@@ -27,8 +23,40 @@
         <div class="row">
             <div class="col-md-8 mx-auto">
                 <h2>My プロフィール</h2>
+                
+                 <form action="{{ action('Admin\ProfileController@create') }}" method="post" enctype="multipart/form-data">
+                
+                <div class="form-group row">
+                    <label>氏名</label>
+                      <input type="text" name="name" value="{{ old('name') }}">
+                    </div>
+                  
+                  <div class="form-group row">
+                    <label>性別</label>
+                    <input type="text" name="gender" value="{{ old('gender') }}">
+                  </div>
+                  
+                  <div class="form-group row">
+                    <label>趣味</label>
+                    <input type="text" name="hobby" value="{{ old('hobby') }}">
+                  </div>
+                  
+                  <div class="form-group row">
+                    <label>自己紹介欄</label>
+                    <textarea class="form-control" name="introduction" rows="15">{{ old('introduction') }}</textarea>
+                  </div>
+                
+                <input type="submit" class="btn btn-primary" value="送信">
+                
+                
+                </form>
             </div>
         </div>
     </div>
 @endsection
+
+
+</body>
+    
+</html>
 
