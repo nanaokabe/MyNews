@@ -1,10 +1,9 @@
 <?php
-
 namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-use App\profiles;
+use App\Profile;
 
 class ProfileController extends Controller
 {
@@ -38,8 +37,8 @@ public function create(Request $request)
 
 
       //データベースに保存する
-      $profile->fill($form);
-      $profile->save();
+      $Profile->fill($form);
+      $Profile->save();
       return redirect('admin/profile/create');
   }
 }
