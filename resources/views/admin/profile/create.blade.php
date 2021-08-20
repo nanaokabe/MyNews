@@ -1,19 +1,13 @@
 <!DOCYPE html>
-
 <html>
   <head>
-  <meta chaset="utf-8">
+  <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="view-port" content="width=device-width, iniical-scale=1">
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>My プロフィール</title>
   </head>
-    <body>
     
-{{-- layouts/admin.blade.phpを読み込む --}}
-@extends('layouts.profile')
-
-
+@extends('layouts.admin')
 {{-- admin.blade.phpの@yield('title')に'ニュースの新規作成'を埋め込む --}}
 @section('title', 'プロフィール')
 
@@ -24,20 +18,30 @@
             <div class="col-md-8 mx-auto">
                 <h2>My プロフィール</h2>
                 
+                
                  <form action="{{ action('Admin\ProfileController@create') }}" method="post" enctype="multipart/form-data">
+
+                    @if (count($errors) > 0)
+                    
+                      <ul>
+                       @foreach($errors->all() as $e)
+                      <li>{{ $e }}</li>
+                      @endforeach
+                      </ul>
+                    @endif
                 
                 <div class="form-group row">
-                    <label>氏名</label>
+                    <label class="col-md-1">氏名</label>
                       <input type="text" name="name" value="{{ old('name') }}">
                     </div>
                   
                   <div class="form-group row">
-                    <label>性別</label>
+                    <label class="col-md-1">性別</label>
                     <input type="text" name="gender" value="{{ old('gender') }}">
                   </div>
                   
                   <div class="form-group row">
-                    <label>趣味</label>
+                    <label class="col-md-1">趣味</label>
                     <input type="text" name="hobby" value="{{ old('hobby') }}">
                   </div>
                   
@@ -45,10 +49,8 @@
                     <label>自己紹介欄</label>
                     <textarea class="form-control" name="introduction" rows="15">{{ old('introduction') }}</textarea>
                   </div>
-                
+                 {{ csrf_field() }}
                 <input type="submit" class="btn btn-primary" value="送信">
-                
-                
                 </form>
             </div>
         </div>

@@ -17,6 +17,7 @@
         <div class="row">
             <div class="col-md-8 mx-auto">
                 <h2>ニュース新規作成</h2>
+                
                 {{-- ここから追記！ --}}
                 <form action="{{ action('Admin\NewsController@create') }}" method="post" enctype="multipart/form-data">
                   
@@ -28,6 +29,7 @@
                     @endforeach
                   </ul>
                   @endif
+                  
                   <div class="form-group row">
                     <label class="col-md-2">タイトル</label>
                     <div class="col-md-10">
@@ -43,7 +45,7 @@
                   </div>
                   <div class="form-group row">
                     <label class="col-md-2">画像</label>
-                    <div class="ol-md-10">
+                    <div class="col-md-10">
                       <input type="file" class="form-control-file" name="image">
                     </div>
                   </div>
