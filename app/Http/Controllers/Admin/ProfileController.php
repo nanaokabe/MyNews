@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Profile;
+use App\Profilehistory;
+use Carbon\Carbon;
 
 class ProfileController extends Controller
 {
@@ -59,6 +61,12 @@ public function edit(Request $request)
       $profile_form = $request->all();
      
       $profile->fill($profile_form)->save();
+
+ // 以下を追記
+        $profilehistory = new Profilehistory;
+        $profilehistory->profile_id = $profile->id;
+        $profilehistory->edited_at = Carbon::now('Asia/Tokyo');
+        $profilehistory->save();
 
       return redirect('admin/profile');
   }
