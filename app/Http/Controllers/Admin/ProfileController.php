@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -14,7 +13,6 @@ public function add()
   {
     return view('admin.profile.create');
   }
-
   
    public function create(Request $request)
   {

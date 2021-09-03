@@ -17,14 +17,14 @@
         <script src="{{ secure_asset('js/app.js') }}" defer></script>
 
         <!-- Fonts -->
-        <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+        <link rel="dns-prefetch" href="http://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
-
+        
         <!-- Styles -->
         {{-- Laravel標準で用意されているCSSを読み込みます --}}
         <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
         {{-- この章の後半で作成するCSSを読み込みます --}}
-        <link href="{{ secure_asset('css/profile.css') }}" rel="stylesheet">
+        <link href="{{ secure_asset('css/index.css') }}" rel="stylesheet">
     </head>
     <body>
         <div id="app">
@@ -35,7 +35,7 @@
                         {{ config('app.name', 'Laravel') }}
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon"></span>
                     </button>
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -66,7 +66,6 @@
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
@@ -74,13 +73,16 @@
                             </li>
                             @endguest
                             {{-- 以上までを追記 --}}
+                            
                         </ul>
-                        
                     </div>
                 </div>
             </nav>
+             <div class="container">
+                 <div class="col-md-6 mt-4">
+                  </div>
+             
             {{-- ここまでナビゲーションバー --}}
-
             <main class="py-4">
                 {{-- コンテンツをここに入れるため、@yieldで空けておきます。 --}}
                 @yield('content')

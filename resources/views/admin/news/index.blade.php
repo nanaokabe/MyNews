@@ -47,6 +47,8 @@
                                     <td>
                                         <div>
                                             <a href="{{ action('Admin\NewsController@edit', ['id' => $news->id]) }}">編集</a>
+                                             <a href="{{ action('Admin\NewsController@remove', ['id' => $news->id]) }}">削除</a>
+                                
                                         </div>
                                     </td>
                                 </tr>
