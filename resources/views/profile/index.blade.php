@@ -3,6 +3,8 @@
 @section('content')
         <span class="head">PROFILE</span><img src=storage/image/sinchan.png width="100",height="30">
         <hr color="orange">
+        <span class="kadai">課題１　デプロイの追加開発</span><br><br>
+        
              @foreach($posts as $post)
              
                             <div class="zone">

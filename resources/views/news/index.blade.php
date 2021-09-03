@@ -3,6 +3,8 @@
 @section('content')
     <div class="container">
         <hr color="#c0c0c0">
+        <span class="kadai">デプロイの追加開発</span><br><br>
+        
         @if (!is_null($headline))
             <div class="row">
                 <div class="headline col-md-10 mx-auto">

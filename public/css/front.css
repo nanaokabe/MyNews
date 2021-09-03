@@ -51,3 +51,7 @@ body {
   width: 250px;
 }
 
+.kadai {
+    border: solid 4px rgb(204,10, 20);
+    background-color: rgba(204, 0, 10, 0.5);
+}
