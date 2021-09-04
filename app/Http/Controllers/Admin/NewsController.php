@@ -22,7 +22,7 @@ class NewsController extends Controller
     $form = $request->all();
     
     if (isset($form['image'])) {
-       $path = Storage::disk('s3')->putFile('/',$form['image'],'public');
+        $path = Storage::disk('s3')->putFile('/',$form['image'],'public');
         $news->image_path = Storage::disk('s3')->url($path);
       } else {
           $news->image_path = null;
@@ -72,7 +72,7 @@ public function index(Request $request)
       if ($request->remove == 'true') {
           $news_form['image_path'] = null;
       } elseif ($request->file('image')) {
-          $path = Storage::disk('s3')->putFile('/',$form['image'],'public');
+          $path = Storage::disk('s3')->putFile('/',$news_form['image'],'public');
           $news->image_path = Storage::disk('s3')->url($path);
       } else {
           $news_form['image_path'] = $news->image_path;
